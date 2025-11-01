@@ -11,6 +11,9 @@ public class CalculadoraGUI
     private JTextField campo2;
     private JButton sumarButton;
     private JLabel etiquetaResultado;
+    private JButton restarButton;
+    private JButton multiplicarButton;
+    private JButton dividirButton;
 
 
     public CalculadoraGUI()
@@ -24,6 +27,39 @@ public class CalculadoraGUI
                 int num2 = Integer.parseInt(campo2.getText());
                 int resultado = num1+num2;
                 //JOptionPane.showMessageDialog(null, "La suma es: "+resultado);
+                etiquetaResultado.setText("El resultado es: "+resultado);
+            }
+        });
+
+        restarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                int num1 = Integer.parseInt(campo1.getText());
+                int num2 = Integer.parseInt(campo2.getText());
+                int resultado = num1-num2;
+                etiquetaResultado.setText("El resultado es: "+resultado);
+            }
+        });
+
+        multiplicarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                int num1 = Integer.parseInt(campo1.getText());
+                int num2 = Integer.parseInt(campo2.getText());
+                int resultado = num1*num2;
+                etiquetaResultado.setText("El resultado es: "+resultado);
+            }
+        });
+
+        dividirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                int num1 = Integer.parseInt(campo1.getText());
+                int num2 = Integer.parseInt(campo2.getText());
+                double resultado = (double) num1/num2;
                 etiquetaResultado.setText("El resultado es: "+resultado);
             }
         });
