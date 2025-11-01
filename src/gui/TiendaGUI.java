@@ -3,8 +3,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 
 public class TiendaGUI {
     private JPanel mainPanel;
@@ -12,8 +11,15 @@ public class TiendaGUI {
     private JSpinner spinner1;
     private JLabel precioU;
     private JLabel precioC;
+    private JButton agregarAlCarritoButton;
+    private JLabel subtotalE;
+    private JLabel totalE;
+    private JTextField campoDescuento;
 
     int precio = 0;
+    int total = 0;
+    int subTotal = 0;
+    int precioCantidad = 0;
 
     public TiendaGUI()
     {
@@ -57,7 +63,41 @@ public class TiendaGUI {
             public void stateChanged(ChangeEvent e)
             {
                 int cantidad = (int)spinner1.getValue();
-                precioC.setText("Precio cantidad: $"+(cantidad*precio));
+                precioCantidad = cantidad*precio;
+                precioC.setText("Precio cantidad: $"+precioCantidad);
+            }
+        });
+
+        agregarAlCarritoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                subTotal += precioCantidad;
+                total += precioCantidad;
+                JOptionPane.showMessageDialog(null, "Producto agregado al carrito");
+                totalE.setText("Total: $"+total);
+                subtotalE.setText("Subtotal: $"+subTotal);
+            }
+        });
+        campoDescuento.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e)
+            {
+                super.keyPressed(e);
+
+                if (e.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    if (campoDescuento.getText().equals("Remington"))
+                    {
+                        total = (int)(total - (total*0.15));
+                        totalE.setText("Total: $"+total);
+                        JOptionPane.showMessageDialog(null, "Descuento aplicado");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Codigo de Descuento no valido");
+                    }
+                }
             }
         });
     }
