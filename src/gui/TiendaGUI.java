@@ -3,6 +3,8 @@ package gui;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -12,8 +14,14 @@ public class TiendaGUI {
     private JSpinner spinner1;
     private JLabel precioU;
     private JLabel precioC;
+    private JButton agregarAlCarritoButton;
+    private JLabel subtotalE;
+    private JLabel totalE;
 
     int precio = 0;
+    int total = 0;
+    int subTotal = 0;
+    int precioCantidad = 0;
 
     public TiendaGUI()
     {
@@ -57,7 +65,20 @@ public class TiendaGUI {
             public void stateChanged(ChangeEvent e)
             {
                 int cantidad = (int)spinner1.getValue();
-                precioC.setText("Precio cantidad: $"+(cantidad*precio));
+                precioCantidad = cantidad*precio;
+                precioC.setText("Precio cantidad: $"+precioCantidad);
+            }
+        });
+
+        agregarAlCarritoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                subTotal += precioCantidad;
+                total += precioCantidad;
+                JOptionPane.showMessageDialog(null, "Producto agregado al carrito");
+                totalE.setText("Total: $"+total);
+                subtotalE.setText("Subtotal: $"+subTotal);
             }
         });
     }
