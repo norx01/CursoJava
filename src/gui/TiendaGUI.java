@@ -3,14 +3,12 @@ package gui;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-<<<<<<< HEAD
+
 import java.awt.event.*;
-=======
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
->>>>>>> origin/main
 
 public class TiendaGUI {
     private JPanel mainPanel;
@@ -21,10 +19,8 @@ public class TiendaGUI {
     private JButton agregarAlCarritoButton;
     private JLabel subtotalE;
     private JLabel totalE;
-<<<<<<< HEAD
+
     private JTextField campoDescuento;
-=======
->>>>>>> origin/main
 
     int precio = 0;
     int total = 0;
@@ -87,7 +83,7 @@ public class TiendaGUI {
                 JOptionPane.showMessageDialog(null, "Producto agregado al carrito");
                 totalE.setText("Total: $"+total);
                 subtotalE.setText("Subtotal: $"+subTotal);
-<<<<<<< HEAD
+
             }
         });
         campoDescuento.addKeyListener(new KeyAdapter() {
