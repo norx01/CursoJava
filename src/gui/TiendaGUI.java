@@ -86,12 +86,12 @@ public class TiendaGUI {
 
             }
         });
+
         campoDescuento.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e)
             {
                 super.keyPressed(e);
-
                 if (e.getKeyCode() == KeyEvent.VK_ENTER)
                 {
                     if (campoDescuento.getText().equals("Remington"))
@@ -105,6 +105,7 @@ public class TiendaGUI {
                         JOptionPane.showMessageDialog(null, "Codigo de Descuento no valido");
                     }
                 }
+
             }
         });
     }
